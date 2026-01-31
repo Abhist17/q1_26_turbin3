@@ -6,7 +6,7 @@ mod state;
 
 use instructions::*;
 
-declare_id!("6xc97Q3o4EoezwXbFmdCAhQHTqbFrCcieYkCyTTYLxu8");
+declare_id!("8z97LxXZpqzse7UQsogWvSBnyXSiDj6FL6yrA2wxKdvt");
 
 #[program]
 pub mod anchor_nft_staking_q4_25 {
