@@ -60,22 +60,37 @@ pub struct Unstake<'info> {
 
 impl<'info> Unstake<'info> {
     pub fn unstake(&mut self) -> Result<()> {
-        let time_elapsed = (Clock::get()?.unix_timestamp - self.stake_account.staked_at)
+        let current_time = Clock::get()?.unix_timestamp;
+        let time_diff = current_time
+            .checked_sub(self.stake_account.staked_at)
+            .ok_or(StakeError::MathOverflow)?;
+        
+        let time_elapsed_days = time_diff
             .checked_div(86400)
-            .unwrap() as u32;
+            .ok_or(StakeError::MathOverflow)?;
+        
+        // Ensure the value fits in u32
+        let time_elapsed = u32::try_from(time_elapsed_days)
+            .map_err(|_| StakeError::MathOverflow)?;
+        
         require!(
             time_elapsed >= self.config.freeze_period,
             StakeError::FreezePeriodNotPassed
         );
 
-        // Reward Calculation
-        let points_earned = time_elapsed * self.config.points_per_stake as u32;
-        self.user_account.points += points_earned;
+        // Reward Calculation with overflow protection
+        let points_earned = (time_elapsed as u64)
+            .checked_mul(self.config.points_per_stake as u64)
+            .ok_or(StakeError::MathOverflow)?;
+        
+        let points_earned = (time_elapsed as u64)
+    .checked_mul(self.config.points_per_stake as u64)
+    .ok_or(StakeError::MathOverflow)?;
 
         let signer_seeds: &[&[&[u8]]] = &[&[
             b"stake",
             &self.config.key().to_bytes(),
-            &self.asset.key.to_bytes(),
+            &self.asset.key().to_bytes(),
             &[self.stake_account.bump],
         ]];
 
@@ -97,7 +112,9 @@ impl<'info> Unstake<'info> {
             .plugin_type(PluginType::FreezeDelegate)
             .invoke_signed(signer_seeds)?;
 
-        self.user_account.amount_staked -= 1;
+        self.user_account.amount_staked = self.user_account.amount_staked
+            .checked_sub(1)
+            .ok_or(StakeError::MathOverflow)?;
 
         Ok(())
     }

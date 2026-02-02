@@ -20,6 +20,8 @@ pub enum StakeError {
     AssetAlreadyInitialized,
     #[msg("Not Owner")]
     NotOwner,
-    #[msg("No reward points in the user account")]
+    #[msg("No points to claim")]
     NoPoints,
+    #[msg("Math operation overflow")]
+    MathOverflow,
 }

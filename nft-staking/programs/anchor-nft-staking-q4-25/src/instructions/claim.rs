@@ -30,8 +30,8 @@ pub struct Claim<'info> {
 
     #[account(
         mut,
-        seeds= [b"config".as_ref()],
-        bump,
+        seeds = [b"config".as_ref()],
+        bump = config.bump,
     )]
     pub config: Account<'info, StakeConfig>,
 
@@ -51,12 +51,19 @@ impl<'info> Claim<'info> {
     pub fn claim(&mut self) -> Result<()> {
         require!(self.user_account.points > 0, StakeError::NoPoints);
 
-        let amount = self.user_account.points as f64 * 10e6;
+        // Use integer math: multiply points by 10^decimals
+        // If reward_mint has 6 decimals, multiply by 1_000_000
+        let decimals_multiplier = 10u64.pow(self.reward_mint.decimals as u32);
+        let amount = (self.user_account.points as u64)
+            .checked_mul(decimals_multiplier)
+            .ok_or(StakeError::MathOverflow)?;
+
         let mint_to_accounts = MintTo {
             mint: self.reward_mint.to_account_info(),
             to: self.user_reward_ata.to_account_info(),
             authority: self.config.to_account_info(),
         };
+        
         let signer_seeds: &[&[&[u8]]] = &[&[b"config".as_ref(), &[self.config.bump]]];
 
         mint_to(
@@ -65,7 +72,7 @@ impl<'info> Claim<'info> {
                 mint_to_accounts,
                 signer_seeds,
             ),
-            amount as u64,
+            amount,
         )?;
 
         self.user_account.points = 0;
