@@ -10,7 +10,7 @@ pub use error::*;         // ← ADD THIS LINE
 pub use instructions::*;
 pub use state::*;
 
-declare_id!("9H98yR9zQpXx9mNa8AuTZFp9jz4YSS2h8fJ5EFFA4cqi");
+declare_id!("H9Ynn2dNpmbpJ8SUJEyWwQJLnJ2ZKEmTqun6RCmWpdBM");
 
 #[program]
 pub mod anchor_amm {

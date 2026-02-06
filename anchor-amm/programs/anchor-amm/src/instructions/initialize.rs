@@ -13,6 +13,14 @@ pub struct Initialize<'info> {
     pub initializer: Signer<'info>,
     pub mint_x: Account<'info, Mint>,
     pub mint_y: Account<'info, Mint>,
+    #[account(
+        init,
+        payer = initializer,
+        seeds = [b"config", seed.to_le_bytes().as_ref()],
+        bump,
+        space = 8 + Config::INIT_SPACE,
+    )]
+    pub config: Account<'info, Config>,
     /// CHECK: This is the authority PDA for the AMM
     #[account(
         seeds = [b"auth"],
@@ -28,14 +36,6 @@ pub struct Initialize<'info> {
         mint::authority = auth,
     )]
     pub mint_lp: Account<'info, Mint>,
-    #[account(
-        init,
-        payer = initializer,
-        seeds = [b"config", seed.to_le_bytes().as_ref()],
-        bump,
-        space = 8 + Config::INIT_SPACE,
-    )]
-    pub config: Account<'info, Config>,
     #[account(
         init,
         payer = initializer,
