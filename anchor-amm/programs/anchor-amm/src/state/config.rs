@@ -11,5 +11,5 @@ pub struct Config {
     pub locked: bool,
     pub config_bump: u8,
     pub lp_bump: u8,
-    pub auth_bump: u8,  // ← ADD THIS LINE IF IT'S MISSING
+    pub auth_bump: u8,  
 }
