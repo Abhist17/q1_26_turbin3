@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 [toolchain]
 package_manager = "yarn"
 
@@ -7,7 +10,11 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
+<<<<<<< HEAD
 anchor_mplxcore = "Hw42mAdtFiNssxFp9wHd9zTiL9omj7Ly3QKHNyPQNmPD"
+=======
+anchor_mplxcore_q4_25 = "3feeK7HhTHmmr9ofcsNSb5QjQ6c8Vyhsko6E377Eo2yC"
+>>>>>>> origin/main
 
 [registry]
 url = "https://api.apr.dev"

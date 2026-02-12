@@ -7,6 +7,7 @@ use mpl_core::{
 
 use crate::{error::MPLXCoreError, state::CollectionAuthority};
 
+<<<<<<< HEAD
 #[derive(Accounts)]
 pub struct FreezeNft<'info> {
     #[account(mut)]
@@ -54,3 +55,16 @@ impl<'info> FreezeNft<'info> {
         Ok(())
     }
 }
+=======
+// #[derive(Accounts)]
+// pub struct FreezeNft<'info> {
+//    // TODO
+// }
+
+// impl<'info> FreezeNft<'info> {
+//     pub fn freeze_nft(&mut self) -> Result<()> {
+//         // TODO
+//         Ok(())
+//     }
+// }
+>>>>>>> origin/main

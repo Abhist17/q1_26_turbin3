@@ -1,6 +1,10 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
+<<<<<<< HEAD
 import { AnchorMplxcoreQ425 } from "../target/types/anchor_mplxcore";
+=======
+import { AnchorMplxcoreQ425 } from "../target/types/anchor_mplxcore_q4_25";
+>>>>>>> origin/main
 import { PublicKey, Keypair, SystemProgram } from "@solana/web3.js";
 import { assert } from "chai";
 import { MPL_CORE_PROGRAM_ID } from "@metaplex-foundation/mpl-core";

@@ -1,4 +1,5 @@
 use anchor_lang::prelude::*;
+<<<<<<< HEAD
 use anchor_spl::{
     associated_token::AssociatedToken,
     token::{burn, transfer, Burn, Mint, Token, TokenAccount, Transfer},
@@ -6,11 +7,16 @@ use anchor_spl::{
 use constant_product_curve::ConstantProduct;
 
 use crate::{error::AmmError, state::Config};
+=======
+
+use crate::state::Config;
+>>>>>>> origin/main
 
 #[derive(Accounts)]
 pub struct Withdraw<'info> {
     #[account(mut)]
     pub user: Signer<'info>,
+<<<<<<< HEAD
     pub mint_x: Account<'info, Mint>,
     pub mint_y: Account<'info, Mint>,
     /// CHECK: This is the authority PDA for the AMM
@@ -144,3 +150,25 @@ impl<'info> Withdraw<'info> {
         burn(ctx, amount)
     }
 }
+=======
+
+    #[account(mut)]
+    pub config: Account<'info, Config>,
+}
+
+impl<'info> Withdraw<'info> {
+    pub fn withdraw(
+        &mut self,
+        _amount: u64,
+        _min_x: u64,
+        _min_y: u64,
+    ) -> Result<()> {
+        Ok(())
+    }
+}
+
+// This standalone function is required by Anchor's #[program] macro
+pub fn withdraw(ctx: Context<Withdraw>, amount: u64, min_x: u64, min_y: u64) -> Result<()> {
+    ctx.accounts.withdraw(amount, min_x, min_y)
+}
+>>>>>>> origin/main
