@@ -5,9 +5,3 @@ target
 node_modules
 test-ledger
 .yarn
-<<<<<<< HEAD
-.surfpool
-migrations
-runbooks
-=======
->>>>>>> origin/main
