@@ -3,11 +3,11 @@ use anchor_lang::{prelude::*, system_program::{Transfer, transfer}};
 use crate::state::Bet;
 
 #[derive(Accounts)]
-#[instruction(seed:u128)]
+#[instruction(seed: u128)]
 pub struct PlaceBet<'info> {
     #[account(mut)]
     pub player: Signer<'info>,
-    ///CHECK: This is safe
+    /// CHECK: This is safe
     pub house: UncheckedAccount<'info>,
     #[account(
         mut,
@@ -18,7 +18,7 @@ pub struct PlaceBet<'info> {
     #[account(
         init,
         payer = player,
-        space = Bet::Discriminator.len() + Bet::INIT_SPACE,
+        space = 8 + Bet::INIT_SPACE,
         seeds = [b"bet", vault.key().as_ref(), seed.to_le_bytes().as_ref()],
         bump
     )]
@@ -27,14 +27,14 @@ pub struct PlaceBet<'info> {
 }
 
 impl<'info> PlaceBet<'info> {
-    pub fn create_bet(&mut self, bumps: &PlaceBetBumps, seed: u128, roll: u8, amount: u64) -> Result<()> {
-        self.bet.set_inner(Bet{
-            slot : Clock::get()?.slot,
+    pub fn create_bet(&mut self, seed: u128, roll: u8, amount: u64, bumps: &PlaceBetBumps) -> Result<()> {
+        self.bet.set_inner(Bet {
+            slot: Clock::get()?.slot,
             player: self.player.key(),
             seed,
             roll,
             amount,
-            bump : bumps.bet,
+            bump: bumps.bet,
         });
         Ok(())
     }

@@ -5,14 +5,10 @@ mod state;
 mod error;
 
 use instructions::*;
-<<<<<<< HEAD
 
-declare_id!("Hw42mAdtFiNssxFp9wHd9zTiL9omj7Ly3QKHNyPQNmPD");
-=======
-// use state::*;
 
-declare_id!("3feeK7HhTHmmr9ofcsNSb5QjQ6c8Vyhsko6E377Eo2yC");
->>>>>>> origin/main
+declare_id!("BCoM6JJbU6Z7qACBk4DpTG6BLtDh4o2jTFE4DbgPc4cG");
+
 
 #[program]
 pub mod anchor_mplxcore_q4_25 {
@@ -30,7 +26,7 @@ pub mod anchor_mplxcore_q4_25 {
         ctx.accounts.mint_nft()
     }
 
-<<<<<<< HEAD
+
     pub fn freeze_nft(ctx: Context<FreezeNft>) -> Result<()> {
         ctx.accounts.freeze_nft()
     }
@@ -44,17 +40,5 @@ pub mod anchor_mplxcore_q4_25 {
         ctx.accounts.update_nft(new_name)
     }
 }
-=======
-    // pub fn freeze_nft(ctx: Context<FreezeNft>) -> Result<()> {
-    //     ctx.accounts.freeze_nft()
-    // }
 
-    // pub fn thaw_nft(ctx: Context<ThawNft>) -> Result<()> {
-    //     ctx.accounts.thaw_nft()
-    // }
-
-    // pub fn thaw_nft(ctx: Context<UpdateNft>, new_name: String) -> Result<()> {
-    //     ctx.accounts.update_nft(new_name)
-    // }
-}
->>>>>>> origin/main
+ 

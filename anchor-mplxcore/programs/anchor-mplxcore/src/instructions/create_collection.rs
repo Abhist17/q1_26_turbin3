@@ -31,7 +31,7 @@ pub struct CreateCollection<'info> {
     #[account(
         init,
         payer = creator,
-        space = CollectionAuthority::DISCRIMINATOR.len() + CollectionAuthority::INIT_SPACE,
+        space = 8 + CollectionAuthority::INIT_SPACE,
         seeds = [b"collection_authority", collection.key().as_ref()],
         bump
     )]
@@ -70,8 +70,6 @@ impl<'info> CreateCollection<'info> {
             .system_program(&self.system_program.to_account_info())
             .name(args.name)
             .uri(args.uri)
-            .plugins(vec![])
-            .external_plugin_adapters(vec![])
             .invoke_signed(signer_seeds)?;
 
         Ok(())
