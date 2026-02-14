@@ -1,152 +1,264 @@
-# Turbin3 Q1 2026 Builders Cohort
+Turbin3 Q1 2026 Builders Cohort
 
-This repository contains all the Solana programs and projects developed during the Turbin3 Q1 2026 Builders Cohort. The repository showcases various on-chain programs built using the Anchor framework, demonstrating Solana smart contract development skills and best practices.
+This repository contains all Solana programs developed during the Turbin3 Q1 2026 Builders Cohort. It showcases multiple production-grade on-chain programs built using the Anchor framework, covering DeFi primitives, governance mechanisms, staking systems, and cryptographic proofs.
 
-## About
+All major programs have successfully passed their respective tests.
 
-This collection represents hands-on learning and implementation of Solana blockchain development concepts, including program architecture, state management, token operations, and secure transaction handling. Each project demonstrates different aspects of Solana development using Rust and the Anchor framework.
+About
 
-## Repository Structure
+This repository represents hands-on implementation of advanced Solana development concepts including:
 
-### anchor_escrow
-An escrow program implementation that enables secure peer-to-peer transactions on the Solana blockchain. This program demonstrates:
-- Escrow account creation and management
-- Token transfers between parties
-- Secure state transitions
-- Program-derived addresses (PDAs)
+On-chain program architecture
 
-### nft-staking
-A comprehensive NFT staking program that allows users to stake their NFTs and earn rewards. Features include:
-- NFT deposit and withdrawal mechanisms
-- Staking rewards calculation
-- User account management
-- Stake tracking and validation
+Account validation and state management
 
-### vault-solana
-A secure vault implementation for managing digital assets on Solana. This program covers:
-- Vault initialization and configuration
-- Deposit and withdrawal functionality
-- Account security best practices
-- SOL and token management
+Token operations (SPL & NFTs)
 
-## Technologies Used
+Governance mechanisms
 
-- **Solana** - High-performance blockchain for decentralized applications
-- **Rust** - Primary programming language for Solana smart contracts
-- **Anchor Framework** - Development framework simplifying Solana program creation
-- **TypeScript** - Used for testing and client interactions
+Automated Market Makers (AMM)
 
-## Getting Started
+Program Derived Addresses (PDAs)
 
-### Prerequisites
+Secure transaction flows
 
-- Rust (latest stable version)
-- Solana CLI tools
-- Anchor Framework (v0.29.0 or higher)
-- Node.js and npm/yarn
+Cross-Program Invocations (CPIs)
 
-### Installation
+Anchor-based testing workflows
 
-1. Clone the repository:
-```bash
+Each folder is an independent Anchor project.
+
+Repository Structure
+anchor-amm
+
+Automated Market Maker implementation.
+
+Features:
+
+Liquidity pool initialization
+
+Token swaps
+
+Liquidity provision & removal
+
+Constant product formula logic
+
+PDA-based vault management
+
+Status: All tests passing
+
+anchor-dice-game
+
+On-chain provably fair dice game.
+
+Features:
+
+Randomized dice outcome logic
+
+Player betting system
+
+Reward distribution
+
+Secure escrowed bets
+
+Status: Tests passed
+
+anchor-mplxcore
+
+Metaplex Core integration program.
+
+Features:
+
+NFT-based interactions
+
+Metadata handling
+
+Token validation logic
+
+Anchor + Metaplex interoperability
+
+Status: Tests passed
+
+anchor-quadratic-voting
+
+Quadratic voting governance implementation (quad-dao).
+
+Features:
+
+Proposal creation
+
+Vote weight = square root logic
+
+Token-based voting power
+
+Governance state management
+
+Status: Tests passed
+
+anchor_escrow
+
+Peer-to-peer escrow smart contract.
+
+Features:
+
+Escrow initialization
+
+Token locking mechanism
+
+Secure trade execution
+
+Refund handling
+
+PDA-based authority control
+
+Status: Initial implementation complete
+
+nft-staking
+
+NFT staking protocol with rewards logic.
+
+Features:
+
+NFT deposit & withdrawal
+
+Reward accrual mechanism
+
+Staking duration tracking
+
+Secure NFT custody
+
+Status: Active development (merge conflicts resolved)
+
+proofs
+
+Cryptographic proof-related program.
+
+Features:
+
+Verification logic
+
+Governance-linked proof validation
+
+Secure instruction handling
+
+Status: Tests passed
+
+vault-solana
+
+Secure SOL/token vault implementation.
+
+Features:
+
+Controlled deposits
+
+Authorized withdrawals
+
+Owner validation
+
+Vault state management
+
+Status: Active development (merge conflicts resolved)
+
+Technologies Used
+
+Solana Blockchain
+
+Rust
+
+Anchor Framework
+
+TypeScript (for testing)
+
+SPL Token Program
+
+Metaplex (MPL Core)
+
+Getting Started
+Prerequisites
+
+Rust (latest stable)
+
+Solana CLI
+
+Anchor (v0.29.0+ recommended)
+
+Node.js (v18+)
+
+Yarn or npm
+
+Clone Repository
 git clone https://github.com/Abhist17/q1_26_turbin3.git
 cd q1_26_turbin3
-```
 
-2. Install dependencies for each project:
-```bash
-cd anchor_escrow
+Install Dependencies (Per Project)
+
+Example:
+
+cd anchor-amm
 npm install
 
-cd ../nft-staking
-npm install
 
-cd ../vault-solana
-npm install
-```
+Repeat for any project directory.
 
-### Building Programs
-
-To build any of the programs:
-
-```bash
-cd <program-directory>
+Build Program
 anchor build
-```
 
-### Testing
-
-Run tests for each program:
-
-```bash
+Run Tests
 anchor test
-```
 
-### Deployment
 
-To deploy to devnet:
+All major programs currently have passing test suites.
 
-1. Configure Solana CLI to devnet:
-```bash
+Deploy to Devnet
 solana config set --url devnet
-```
-
-2. Deploy the program:
-```bash
 anchor deploy
-```
 
-## Program Features
+Core Competencies Demonstrated
 
-### Anchor Escrow
-- Maker creates escrow with offered tokens
-- Taker can accept the escrow and exchange tokens
-- Escrow can be refunded if not accepted
-- Secure token handling with associated token accounts
+Advanced Anchor macros & constraints
 
-### NFT Staking
-- Users can stake NFTs to earn rewards
-- Flexible staking periods
-- Automatic reward calculation
-- Safe NFT custody and return
+PDA derivation & authority management
 
-### Vault Solana
-- Secure SOL storage
-- Controlled deposit and withdrawal operations
-- Owner-based access control
-- Efficient state management
+Token program interactions
 
-## Learning Outcomes
+CPI (Cross Program Invocation)
 
-This repository demonstrates proficiency in:
-- Solana program development with Anchor
-- Account management and validation
-- Token operations and transfers
-- Program-derived addresses (PDAs)
-- Cross-program invocations (CPIs)
-- Security best practices
-- Testing and deployment workflows
+Governance & quadratic voting logic
 
-## Resources
+AMM mathematical modeling
 
-- [Solana Documentation](https://docs.solana.com/)
-- [Anchor Documentation](https://www.anchor-lang.com/)
-- [Turbin3 Cohort](https://turbin3.com/)
+NFT staking systems
 
-## Contributing
+Secure escrow mechanics
 
-This repository is part of the Turbin3 educational program. Feel free to explore the code and learn from the implementations.
+Test-driven smart contract development
 
-## License
+Merge conflict resolution in multi-program repositories
 
-This project is open source and available for educational purposes.
+Learning Outcome
 
-## Acknowledgments
+This repository reflects end-to-end proficiency in:
 
-- Turbin3 team for the comprehensive blockchain development curriculum
-- Solana Foundation for the robust blockchain infrastructure
-- Anchor framework contributors for simplifying Solana development
+Solana smart contract engineering
 
----
+Secure on-chain state transitions
 
-Built with dedication during the Turbin3 Q1 2026 Builders Cohort
+DeFi primitive implementation
+
+Governance protocol design
+
+Blockchain testing & debugging workflows
+
+Resources
+
+Solana Documentation
+
+Anchor Documentation
+
+Metaplex Documentation
+
+Acknowledgment
+
+Built during Turbin3 Q1 2026 Builders Cohort.
+
+All major programs successfully tested and validated.
