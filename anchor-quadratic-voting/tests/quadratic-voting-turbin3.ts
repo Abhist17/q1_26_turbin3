@@ -156,3 +156,8 @@ describe("quadratic-voting-turbin3", () => {
     expect(proposalAccount.votesNo.toNumber()).to.equal(0);
   });
 });
+// Final test file for Quadratic Voting
+// This test file tests the following:
+// 1. Initializes a DAO
+// 2. Creates a proposal
+// 3. Casts a vote
